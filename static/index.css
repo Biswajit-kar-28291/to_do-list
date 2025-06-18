@@ -1,0 +1,349 @@
+body {
+  margin: 0;
+  padding: 0;
+  /* position: relative; */
+  min-height: 100vh;
+  overflow: scroll;
+
+
+}
+
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; 
+  left: 0;
+  width: 100%;
+  height: 150dvh;
+  /* background-image: url("https://rukminim2.flixcart.com/image/850/1000/jxhv1jk0/poster/h/s/y/medium-anime-city-night-bench-blue-street-light-13-19-inches-original-imaf9hy9htwjm5qg.jpeg?q=20&crop=false");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center; */
+
+  /* background: linear-gradient(90deg, #020024 0%, #090979 35%, #05687b 100%); */
+  background: linear-gradient(135deg, #232526 0%, #000000 100%);
+  filter: blur(2.5px); 
+  z-index: -1; 
+}
+
+
+/* .fade-out-on-load {
+  animation: popOut 2s cubic-bezier(.68,-0.55,.27,1.55) forwards;
+}
+
+@keyframes popOut {
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  80% {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+  0% {
+    opacity: 0;
+    transform: scale(1.3);
+  }
+} */
+
+
+.bounce-text {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  /* font-size: 2.5rem;
+  color: #38f9d7;
+  display: inline-block; */
+  animation: bounce 6s infinite;
+  /* Optional for better effect: */
+  /* 
+  
+  text-shadow: 0 2px 8px rgba(56,249,215,0.3); */
+}
+
+
+.fade-out-up {
+  opacity: 0;
+  transform: translateY(-80px) scale(0.95);
+  pointer-events: none;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+    animation-timing-function: cubic-bezier(.8,0,1,1);
+  }
+  50% {
+    transform: translateY(-30px);
+    animation-timing-function: cubic-bezier(0,0,.2,1);
+  }
+}
+
+
+
+@keyframes slideInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.card-left {
+  animation: slideInLeft 1s cubic-bezier(.68,-0.55,.27,1.55) forwards;
+  /* animation-delay: 0ms; */
+}
+
+.card-right {
+  animation: slideInRight 2s cubic-bezier(.68,-0.55,.27,1.55) forwards;
+}
+
+
+
+
+
+
+
+.mainbox{
+    /* border: 2px solid red; */
+    height: 100vh;
+    width: 80%;
+    /* margin-top: 1%; */
+    margin: auto;
+      font-family: Segoe UI, Roboto, Inter, Arial, sans-serif !important;
+}
+.logo{
+    /* border: 2px dotted palevioletred; */
+    margin-top: 1%;
+    /* border-bottom:2px solid rgba(116, 202, 248, 0.877); */
+    /* display: inline; */
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+}
+.logo p{
+    display: inline;
+    letter-spacing: 2px;
+    color: rgb(245, 209, 45);
+}
+.logo h1{
+  font-family: Copperplate, "Copperplate Gothic Light", fantasy; font-size: 24px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 26.4px;
+}
+.logo img{
+    width: 10vh;
+    /* display: inline; */
+    height: 10vh;
+    padding-left:10vh ;
+    /* box-shadow: rgb(205, 205, 228) 0px 7px 29px 0px; */
+    
+}
+.content{
+    display: flex;
+}
+.desc{
+    /* border: 4px solid rgb(255, 0, 0); */
+    height: 80vh;
+    width: 50%;
+    color: aliceblue;
+    padding: 30px;
+    padding-left: 50px;
+}
+
+.desc h1{
+  font-family: Verdana, Geneva, sans-serif; font-size: 24px; font-style: normal; font-variant: normal; font-weight: 700;
+    font-size: 50px;
+    background:linear-gradient(135deg, #ffffff, #40cce8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    /* line-height: 0.01; */
+}
+
+.desc h5,a{
+  font-family: "Book Antiqua", Palatino, "Palatino Linotype", "Palatino LT STD", Georgia, serif; font-size: 15px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 15.4px;
+    line-height: 0.005;
+    /* font-size: 16px; */
+    /* color:aqua; */
+    letter-spacing: 2px;
+    /* text-align: center; */
+    line-height: 0.005;
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.849);
+    letter-spacing: 2px;
+}
+
+
+.desc .line{
+    border: 2px solid aliceblue;
+    width:15%;
+    margin-top: 15vh;
+}
+.desc p{
+
+  font-family: Papyrus, fantasy; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 20px; 
+    padding-right: 10vh;
+    margin-top: 5vh;
+        color: rgba(255, 255, 255, 0.763);
+
+}
+.desc button{
+      font-family: Garamond, Baskerville, "Baskerville Old Face", "Hoefler Text", "Times New Roman", serif; font-size: 20px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 20px; 
+
+
+
+    padding:15px 40px;
+    margin-top: 12vh;
+    border-radius: 35px;
+    color: aliceblue;
+      background: linear-gradient(90deg, #0c04ae 0%, #0606bf 35%, #0587a1 100%);
+
+    border: none;
+}
+
+.desc button:hover{
+    transform: scale(1.05);
+    background: linear-gradient(90deg, #0587a1  0%,  #0606bf 45%, #0c04ae 90%);
+}
+
+.desc button:active{
+    transform: scale(0.9);
+}
+.input_part{
+    /* border: 4px solid rgb(0, 255, 30); */
+    height: auto;
+    width: 50%;
+     display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.login_form{
+    box-shadow: rgba(198, 198, 244, 0) 0px 7px 29px 0px;
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: fit-content;
+    flex-direction: column;
+    color: aqua;
+    margin: 16px;
+    background-color: rgba(255, 255, 255, 0.144);
+    border-radius: 35px;
+}
+form{
+        color:aqua;
+}
+
+.login_form input{
+    border-radius: 30px;
+    width: 90%;
+    border: none;
+    background: rgba(255, 255, 255, 0.189);
+    font-size: medium;
+    padding: 15px;
+    margin: 10px;
+}
+.login_form label{
+   font-family: Garamond, Baskerville, "Baskerville Old Face", "Hoefler Text", "Times New Roman", serif; font-size: 18px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 20px; 
+    color:aqua;
+    margin: 10px;
+    /* font-size: medium; */
+}
+.login_form textarea{
+    border-radius: 15px;
+    border: none;
+    width: 90%;
+    background: rgba(255, 255, 255, 0.189);
+    font-size: medium;
+    padding: 15px;
+    margin: 10px;
+}
+.login_form textarea::placeholder{
+  font-family: Garamond, Baskerville, "Baskerville Old Face", "Hoefler Text", "Times New Roman", serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 20px; 
+    color:aqua;
+    opacity: 0.5;
+}
+.login_form input::placeholder{
+  font-family: Garamond, Baskerville, "Baskerville Old Face", "Hoefler Text", "Times New Roman", serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 20px; 
+    color:aqua;
+    /* filter: blur(0.5px); */
+    opacity: 0.9 ;
+}
+
+
+.login_form input[type="date" i]{
+    color: rgba(255, 255, 255, 0.432);
+    width: 80%;
+
+}
+.login_form input:focus{
+    color: rgba(255, 255, 255, 0.851);
+    background:none;
+}
+.login_form input:hover{
+    transform: scale(1.05);
+}
+.login_form input[type='submit' i]:hover{
+    background: linear-gradient(90deg, #0587a1  0%,  #0606bf 45%, #0c04ae 90%);
+
+}
+.login_form input[type="submit" i]:active{
+    transform: scale(0.9);
+}
+
+.login_form input[type="submit" i]{
+    font-family: Garamond, Baskerville, "Baskerville Old Face", "Hoefler Text", "Times New Roman", serif; font-size: 20px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 20px; 
+
+    padding: 15px 45px;
+    margin:  20px;
+    align-items: center;
+      background: linear-gradient(90deg, #0c04ae 0%, #0606bf 35%, #0587a1 100%);
+        color: rgb(255, 255, 255);
+
+
+}
+
+.login_form h3,a{
+   font-family: "Book Antiqua", Palatino, "Palatino Linotype", "Palatino LT STD", Georgia, serif; font-size: 15px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 15.4px;
+    line-height: 0.005;
+    /* font-size: 16px; */
+    color:aqua;
+    letter-spacing: 2px;
+    text-align: center;
+}
+.login_form h1{
+     font-family: Impact, Haettenschweiler, "Franklin Gothic Bold", Charcoal, "Helvetica Inserat", "Bitstream Vera Sans Bold", "Arial Black", "sans serif"; font-size: 30px; font-style: normal; font-variant: normal; 
+     letter-spacing: 1px;
+}
+
+
+@media (min-width: 0px) and (max-width: 900px) {
+    .desc{
+        /* display: none; */
+        width: 100%;
+        
+    }
+    .content{
+        flex-direction: column;
+    }
+    .input_part{
+        width: 100%;
+        /* margin: auto; */
+    }
+    .mainbox{
+        width: 100%;
+    }
+}

@@ -1,0 +1,214 @@
+{% extends 'index.html'%}
+{%block link%}
+<link rel="stylesheet" href="/static/todo.css">
+{%endblock%}
+{%block dashboard%}
+ <div class="logo">
+            <svg style="margin-right: 10px;" xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+  <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+  <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
+</svg>
+           <h1 class="bounce-text">{{name.name}}</h1> 
+           <div class="logout">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0z"/>
+  <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z"/>
+</svg>
+            <a href="/">logout</a>
+           </div>
+           
+        </div>
+<div class="report">
+    <div class="top">
+        <div class="card card-right">
+            <h3>{{t_task}}</h3>
+            <p>TOTAL TASK</p>
+        </div>
+        <div class="card card-left">
+            <h3>{{c_count}}</h3>
+            <p>COMPLETE TASK</p>
+        </div>
+    </div>
+    <div class="down">
+        <div class="card card-right">
+            <h3>{{i_count}}</h3>
+            <p>INCOMPLETE TASK</p>
+        </div>
+        <div class="card card-left">
+            <div class="progress-bar-container">
+  <div class="progress-bar" style="width:{{per}}% ">{{per}}%</div>
+</div>
+
+
+            <p>{{per}}% COMPLETE TASK</p>
+        </div>
+    </div>
+</div>
+
+<div style="display: flex;">
+<div class="add_from">
+  {%block form%}
+                    <!-- <h1>Sign Up</h1> -->
+                    
+                    <form action="/todo/{{name.id}}" method="post">
+                        
+
+
+                        <!-- <label for="email">Registered Email Id:</label><br> -->
+                        <input type="text" placeholder="Add new task" name="task"><br>
+                        <div class="lowpartoffrom">
+                        <div >
+
+                        <label >Due date:</label><br>
+                        <input type="date" name="date">
+                        </div >
+
+                        <div >
+                        <label for="">Category:</label><br>
+                        <input type="text" placeholder="Add your task category" name="category">
+                        </div>
+                        
+                        <input type="submit" value="+Add">
+                        
+                        </div>
+                        
+                        
+
+                    </form>
+                    <!-- <h5>Don't have account? <a href="/register">Register</a></h5> -->
+                     
+                </div>
+                </div>
+                {%endblock%}
+
+
+                <div class="filter">
+        
+        <a href="/todo/{{ name.id }}?filter=all" >All</a>
+        <a href="/todo/{{ name.id }}?filter=incomplete"  >incompleted</a>
+        <a href="/todo/{{ name.id }}?filter=complete" >Completed</a>
+
+
+    </div>
+
+
+
+
+{%if tasks | length != 0%}
+                {% for i in tasks%}
+
+                <div class="card card_list">
+ 
+  <div class="card-body">
+    <figure>
+      <blockquote class="blockquote">
+        <div class="task">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookmark-fill" viewBox="0 0 16 16">
+  <path d="M2 2v13.5a.5.5 0 0 0 .74.439L8 13.069l5.26 2.87A.5.5 0 0 0 14 15.5V2a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2"/>
+</svg>
+
+        <h3 id="taskText{{i.id}}" data-task="{{i.task}}" style=" color: #38f9d7;"> {% if i.status=='incomplete' %}{{i.task}}{% else %} 
+         <s> {{i.task}}{% endif %}</s></h3>
+        </div>
+
+        <div class="icon">
+          <a href="/update/{{i.id}}">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+  <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+  <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
+</svg></a>
+        <a href="/delete/{{i.id}}" id="hideBtn"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+  <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47M8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5"/>
+</svg></a> 
+
+       </div>
+      </blockquote>
+      <figcaption class="blockquote-footer" style="color: rgb(199, 230, 230);">
+        <!-- <p>Due: 10.2.15</p> -->
+        <div class="form-check form-switch">
+<input class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault{{i.id}}" name="read"
+         onchange="sendStatus(this, '{{i.id}}')" {% if i.status=='complete' %}checked{% endif %}>
+  <label class="form-check-label" for="switchCheckDefault{{i.id}}">Mark as {% if i.status=='complete' %}unodone {% else %} done{% endif %}</label>
+
+
+
+
+
+  <label style="margin-left: 10px;">Due: {{i.date}}</label>
+  <label style="margin-left: 10px;">Status: {{i.status}}</label>
+
+
+  
+  
+</div>
+      </figcaption>
+    </figure>
+  </div>
+</div>
+<script>
+function sendStatus(checkbox, itemId) {
+  const label = document.querySelector("label[for='switchCheckDefault" + itemId + "']");
+   if (label) {
+        label.textContent = "Mark as " + (checkbox.checked ? "unodone" : "done");
+    } 
+    
+    const taskText = document.getElementById("taskText" + itemId);
+    if (taskText) {
+        if (checkbox.checked) {
+            // Add strikethrough
+            taskText.innerHTML = "<s>" + taskText.textContent + "</s>";
+        } else {
+            // Remove strikethrough
+            // Remove <s> tags, show plain text
+            taskText.textContent = taskText.textContent.replace(/^(\s*)/, '').replace(/^<s>(.*)<\/s>$/, '$2');
+            // Or simply set to original text if you have it elsewhere
+        }
+    }
+  fetch('/update_status/' + itemId, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ read: checkbox.checked })
+    })
+    .then(response => response.json())
+    .then(data => {
+        // Optional: show a message or update the UI
+        window.location.reload();
+    });
+}
+
+
+document.getElementById('hideBtn').onclick = function() {
+  const box = document.getElementById('bounceBox');
+  box.classList.add('fade-out-up');
+};
+
+
+   const links = document.querySelectorAll('.my-link');
+        links.forEach(function(link) {
+            link.addEventListener('click', function(event) {
+               // event.preventDefault(); // Prevent navigation
+                // Reset background for all links
+                links.forEach(l => l.style.backgroundColor = "");
+                // Set background for clicked link
+                this.style.backgroundColor ="rgba(255, 255, 255, 0.134)"; // or any color you like
+            });
+        });
+
+</script>
+
+{%endfor%}
+ {% elif tasks | length == 0 %}
+ <div style="color: rgb(142, 137, 137); margin-top:20px; text-align: center;">
+  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-card-heading" viewBox="0 0 16 16">
+  <path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2z"/>
+  <path d="M3 8.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5m0-5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5z"/>
+</svg>
+<p>Nothig here !!</p>
+ </div>
+    <!-- <h3 stsyle="color: #38f9d7;">no data</h3> -->
+  {% else %}
+    <p>You have a few tasks.</p>
+{%endif%}
+{%endblock%}
