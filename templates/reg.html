@@ -1,0 +1,30 @@
+{% extends 'index.html'%}
+
+{% block l1%}
+<h5>Already Registerd? <a href="/">Login</a></h5>
+{%endblock%}
+
+{%block l2%}
+<div class="login_form card-left">
+                    <h2>Sign Up</h2>
+                    <form action="/register" method="post">
+                        <label for="">Name:</label>
+                        <input type="text" name="name" placeholder="enter your name"><br>
+
+                        <label for="email">Email Id:</label><br>
+                        <input type="email" placeholder="Enter your mail" name="email"><br>
+
+                        <label for="password">Password:</label><br>
+                        <input type="password" placeholder="password" name="password"><br>
+                        <label for="password">Verify Password:</label><br>
+                        <input type="password" placeholder="password" name="a_password"><br>
+
+
+                        <input type="submit" value="Register" >
+                                                <h3 style="margin-bottom: 50px; color: aliceblue;">Already have account? <a href="/" >login</a></h3>
+
+
+                    </form>
+                     
+                </div>
+{%endblock%}
